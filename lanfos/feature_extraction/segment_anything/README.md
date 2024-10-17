@@ -1,0 +1,2 @@
+# Segment Anything from LangSplat
+This is the modified version of SAM ([Paper](https://arxiv.org/abs/2304.02643), [Code](https://github.com/facebookresearch/segment-anything)) from LangSplat ([Paper](https://arxiv.org/abs/2312.16084), [Code](https://github.com/minghanqin/LangSplat)). This version returns masks at all three semantic levels (large, medium and small) as well as the default masks of SAM (which is a combination of masks at all three levels).
