@@ -2,3 +2,9 @@ __pycache__
 .DS_Store
 build
 submodules
+*.pyc
+.vscode
+output
+diff_rasterization/diff_rast.egg-info
+diff_rasterization/dist
+tensorboard_3d
