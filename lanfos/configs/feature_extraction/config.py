@@ -1,4 +1,4 @@
-dataset_path: str
+dataset_path: str   # Path to dataset's top level folder
 sam_ckpt_path = "sam_vit_h_4b8939.pth"
 image_dir_path = f"{dataset_path}/images"
 save_dir_path = f"{dataset_path}/siglip_features"
