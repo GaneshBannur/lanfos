@@ -4,7 +4,7 @@ gs_ckpt_path: str   # Path to .pth file of RGB Gaussian Splatting
 dataset_name: str
 test_frequency = 4_200
 feature_level = "small"
-lf_dir = f"{source_path}/siglip_features"
+lf_dir = f"{source_path}/clustered_siglip_features"
 model_path = f"{save_path}/{dataset_name}/{feature_level}"
 lf_clusters_path = f"{source_path}/clusters_{feature_level}/cluster_centers.npy"
 iterations = 52_500
