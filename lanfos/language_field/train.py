@@ -115,13 +115,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             viewpoint_stack = scene.getTrainCameras().copy()
         viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack)-1))
 
-        # Render
         if (iteration - 1) == debug_from:
             pipe.debug = True
 
         bg = torch.rand((3), device="cuda") if opt.random_background else background
 
-        # Loss
+        # Render and calculate loss
         if train_lf_decoder==False:
             loss = loss_for_lf_train(viewpoint_cam, gaussians, pipe, bg)
         elif train_lf_decoder==True:
