@@ -9,8 +9,8 @@ class SigLIPInference(nn.Module):
     def __init__(self, model_name, pretraining_dataset, weight_precision, torch_device="cuda"):
         super().__init__()
         self.model, _, self.process = open_clip.create_model_and_transforms(
-            model_name,     # Example: "ViT-B-16"
-            pretrained=pretraining_dataset,     # Example: "laion2b_s34b_b88k"
+            model_name,     # Example: "ViT-B-16-SigLIP-512"
+            pretrained=pretraining_dataset,     # Example: "webli"
             precision=weight_precision,
             device=torch_device
         )
