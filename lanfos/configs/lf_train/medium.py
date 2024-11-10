@@ -1,7 +1,7 @@
 save_path: str  # Path where trained model will be saved
 source_path: str    # Path to dataset's top level folder
 gs_ckpt_path: str   # Path to .pth file of RGB Gaussian Splatting
-dataset_name = "figurines"
+dataset_name: str
 test_frequency = 4_200
 feature_level = "medium"
 lf_dir = f"{source_path}/siglip_features"
