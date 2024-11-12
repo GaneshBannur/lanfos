@@ -27,7 +27,7 @@ try:
 except ImportError:
     TENSORBOARD_FOUND = False
 
-# @torch.compile(fullgraph=True, dynamic=False)
+@torch.compile(fullgraph=True, dynamic=False)
 def compiled_for_lf_train(lf_image, pc, viewpoint_camera):
     # lf_image has shape [D, H, W] but the decoder needs [..., D]
     lf_image = lf_image.movedim(0, -1)
