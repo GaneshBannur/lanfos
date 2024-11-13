@@ -232,15 +232,6 @@ def training_report(tb_writer, iteration, loss, elapsed, testing_iterations, sce
         torch.cuda.empty_cache()
 
 if __name__ == "__main__":
-
-    # TEMPORARY
-    import torch
-    free_gpu_mem_gb = torch.cuda.mem_get_info()[0]/(1024**3)
-    print("Waiting for free GPU memory")
-    while free_gpu_mem_gb<15:
-        free_gpu_mem_gb = torch.cuda.mem_get_info()[0]/(1024**3)
-    print("Found free GPU memory")
-
     from typing import Any, List
     import importlib.util
     from pathlib import Path
