@@ -49,8 +49,7 @@ def compiled_for_unnormalized_lf_loss(lf_image, pc, viewpoint_camera):
     lf_image = lf_image.movedim(0, -1)
     lf_image = pc.lf_decoder(lf_image)
     unnormalized_loss = mask_l2_unnormalized_loss(lf_image, viewpoint_camera.gt_lf.to("cuda"),
-                                                  viewpoint_camera.lf_bg_mask.to("cuda"),
-                                                  viewpoint_camera.lf_num_considered)
+                                                  viewpoint_camera.lf_bg_mask.to("cuda"))
     return unnormalized_loss
 
 def unnormalized_lf_loss(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, scaling_modifier = 1.0,
@@ -86,9 +85,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     tb_writer = prepare_output_and_logger(dataset, opt, pipe)
     gaussians = GaussianModel(dataset.sh_degree)
     scene = Scene(dataset, gaussians, test_cam_names_path, lf_dir, lf_feature_level)
-    gaussians.training_setup(opt, lf_dim, lf_lr, lf_decoder_lr, lf_decoder_dims, lf_clusters_path)
     (gs_model_params, gs_first_iter) = torch.load(gs_ckpt_path,)
     gaussians.restore_gs(gs_model_params)
+    gaussians.training_setup(opt, lf_dim, lf_lr, lf_decoder_lr, lf_decoder_dims, lf_clusters_path)
 
     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
